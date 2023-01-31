@@ -15,7 +15,6 @@ public class EventController {
     @Autowired
     EventService eventService;
 
-    // All events
     @GetMapping("/event")
     public ResponseEntity <List<Event>> getAllEvents() {
         return new ResponseEntity<>(eventService.getAllEvents(), HttpStatus.OK);
@@ -24,5 +23,9 @@ public class EventController {
     // Event by userId 
 
     // New event
+    @PostMapping("/event")
+    public ResponseEntity<Event> newEvent(@RequestBody Event event) {  // @RequestParam(required = true) Long userId
+        return new ResponseEntity<>(eventService.newEvent(event), HttpStatus.CREATED);
+    }
 
 }
