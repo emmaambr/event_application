@@ -1,6 +1,7 @@
 package com.example.backend.service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<Event> getAllEvents() {
+        eventRepository.updateActive(false, LocalDate.now(), LocalTime.now());
+
         return (List<Event>)eventRepository.findAll();
     }
 
