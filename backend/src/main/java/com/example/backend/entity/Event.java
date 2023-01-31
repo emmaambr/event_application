@@ -17,6 +17,7 @@ public class Event {
     private LocalTime time; 
     private int ageLimit;
     private Double cost; 
+    private Boolean active; 
 
     // private String oranizer; (+ get & set)
 
@@ -24,14 +25,15 @@ public class Event {
     
     }
 
-    public Event(Long id, String title, String description, LocalDate date, LocalTime time, int ageLimit, Double cost) {
-        this.id = id; 
+    public Event(String title, String description, LocalDate date, 
+        LocalTime time, int ageLimit, Double cost, Boolean active) {
         this.title = title; 
         this.description = description; 
         this.date = date;
         this.time = time; 
         this.ageLimit = ageLimit;
         this.cost = cost; 
+        this.active = active;
     }
 
     public Long getId() {
@@ -88,6 +90,14 @@ public class Event {
 
     public void setCost(Double cost) {
         this.cost = cost;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
 }
