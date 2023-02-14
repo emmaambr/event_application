@@ -40,4 +40,9 @@ public class UserServiceImpl implements UserService {
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
     }
 
+    @Override
+    public User getUser(String username) {
+        return userRepository.findByUsername(username);
+    }
+
 }
