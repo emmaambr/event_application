@@ -1,7 +1,5 @@
 package com.example.backend.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +20,10 @@ public class UserController {
         return new ResponseEntity<>(userService.getUser(id), HttpStatus.OK);
     }
 
-    @GetMapping("/user")
-    public ResponseEntity <List<User>> getUsers() {
-        return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
-    }
-
     @PostMapping("/user/register")
     public ResponseEntity<User> newUser(@Valid @RequestBody User user) {
-        return new ResponseEntity<>(userService.newUser(user), HttpStatus.CREATED);
+        userService.newUser(user);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 }
