@@ -1,12 +1,19 @@
 package com.example.backend.entity;
 
+import java.util.Set;
+
 import javax.validation.constraints.NotBlank;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
+@AllArgsConstructor
+@NoArgsConstructor 
 public class User {
 
     @Id
@@ -23,20 +30,11 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    private Set<Event> event;
+
     private String name; 
     private String email; 
-
-    public User() {
-    
-    } 
-
-    public User(Long id, String username, String password, String name, String email) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.name = name; 
-        this.email = email;
-    }
 
     public Long getId() {
         return id;
