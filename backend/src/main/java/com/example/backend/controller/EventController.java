@@ -19,13 +19,20 @@ public class EventController {
     public ResponseEntity <List<Event>> getAllEvents() {
         return new ResponseEntity<>(eventService.getAllEvents(), HttpStatus.OK);
     }
-    
-    // Event by userId 
 
-    // New event
+    @GetMapping("/event/active/true")
+    public ResponseEntity <List<Event>> getAllActiveEvents() {
+        return new ResponseEntity<>(eventService.getAllActiveEvents(), HttpStatus.OK);
+    }
+
+    @GetMapping("/event/filter") 
+    public ResponseEntity <List<Event>> getActiveUserEvent(@RequestParam(required = true) Long userId, @RequestParam(required = true) Boolean active) {
+            return new ResponseEntity<>(eventService.getActiveUserEvent(userId, active), HttpStatus.OK);
+    }
+
     @PostMapping("/event")
-    public ResponseEntity<Event> newEvent(@RequestBody Event event) {  // @RequestParam(required = true) Long userId
-        return new ResponseEntity<>(eventService.newEvent(event), HttpStatus.CREATED);
+    public ResponseEntity<Event> newEvent(@RequestBody Event event, @RequestParam(required = true) Long userId) { 
+        return new ResponseEntity<>(eventService.newEvent(event, userId), HttpStatus.CREATED);
     }
 
 }
