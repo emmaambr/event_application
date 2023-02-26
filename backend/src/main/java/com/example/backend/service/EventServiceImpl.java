@@ -11,12 +11,16 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.example.backend.repository.EventRepository;
 import com.example.backend.entity.Event;
+import com.example.backend.entity.User;
 
 @Service
 public class EventServiceImpl implements EventService {
 
     @Autowired
     EventRepository eventRepository; 
+
+    @Autowired
+    UserService userService; 
 
     @Override
     public List<Event> getAllEvents() {
@@ -26,9 +30,27 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Event newEvent(Event event) { // Long userId 
+    public List<Event> getAllActiveEvents() {
+        eventRepository.updateActive(false, LocalDate.now(), LocalTime.now());
+
+        return eventRepository.activeEvents();
+    }
+
+    @Override
+    public List<Event> getActiveUserEvent(Long userId, Boolean active){
+        eventRepository.updateActive(false, LocalDate.now(), LocalTime.now());
+
+        if(active != null) {
+            return eventRepository.activeUserEvent(userId, active);
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found"); 
+    }
+
+    @Override
+    public Event newEvent(Event event, Long userId) {
+        User user = userService.getUser(userId);
+        event.setUser(user);
         event.setActive(true);
-    
         if(event.getDate().isAfter(LocalDate.now())) {
             return eventRepository.save(event);
         } 
@@ -36,6 +58,4 @@ public class EventServiceImpl implements EventService {
     }
     
 }
-
-
 
