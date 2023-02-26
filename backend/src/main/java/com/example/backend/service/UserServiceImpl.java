@@ -1,7 +1,5 @@
 package com.example.backend.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -27,17 +25,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getUsers() {
-        return (List<User>)userRepository.findAll();
-    }
-
-    @Override
     public User newUser(User user) {
         if (user.getEmail().contains("@")) {
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             return userRepository.save(user);
         }
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
+    }
+
+    @Override
+    public User getUser(String username) {
+        return userRepository.findByUsername(username);
     }
 
 }

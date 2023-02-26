@@ -1,13 +1,11 @@
 package com.example.backend.service;
 
-import java.util.List;
-
 import com.example.backend.entity.User;
 
 public interface UserService {
     
     User getUser(Long id);
-    List<User> getUsers();
+    User getUser(String username);
     User newUser(User user);
 
 }
