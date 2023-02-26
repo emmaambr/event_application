@@ -3,14 +3,23 @@ package com.example.backend.entity;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import jakarta.persistence.*;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; 
+
+    @ManyToOne
+    private User user;
+
     private String title;
     private String description; 
     private LocalDate date; 
@@ -18,23 +27,6 @@ public class Event {
     private int ageLimit;
     private Double cost; 
     private Boolean active; 
-
-    // private String oranizer; (+ get & set)
-
-    public Event() {
-    
-    }
-
-    public Event(String title, String description, LocalDate date, 
-        LocalTime time, int ageLimit, Double cost, Boolean active) {
-        this.title = title; 
-        this.description = description; 
-        this.date = date;
-        this.time = time; 
-        this.ageLimit = ageLimit;
-        this.cost = cost; 
-        this.active = active;
-    }
 
     public Long getId() {
         return id;
