@@ -4,23 +4,28 @@ import java.util.Set;
 
 import javax.validation.constraints.NotBlank;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
-@AllArgsConstructor
-@NoArgsConstructor 
 public class User {
 
+    public User() {
+    }
+
+    public User(String username, String password, String email, String name) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.name = name;
+    }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "username cannot be blank")
+    @NotBlank(message = "password cannot be blank")
     @Nonnull
     @Column(nullable = false, unique = true)
     private String username;
@@ -30,11 +35,18 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @NotBlank(message = "email cannot be blank")
+    @Nonnull
+    @Column(nullable = false, unique = true)
+    private String email; 
+
+    @NotBlank(message = "name cannot be blank")
+    @Nonnull
+    @Column(nullable = false)
+    private String name; 
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Set<Event> event;
-
-    private String name; 
-    private String email; 
 
     public Long getId() {
         return id;
@@ -60,21 +72,20 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

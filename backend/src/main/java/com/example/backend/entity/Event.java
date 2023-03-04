@@ -3,15 +3,23 @@ package com.example.backend.entity;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 import jakarta.persistence.*;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 public class Event {
+
+    public Event() {
+    }
+
+    public Event(String title, String description, LocalDate date, LocalTime time, int ageLimit, Double cost, Boolean active) {
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.time = time;
+        this.ageLimit = ageLimit;
+        this.cost = cost;
+        this.active = active;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

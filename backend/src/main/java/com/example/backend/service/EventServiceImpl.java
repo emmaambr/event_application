@@ -48,10 +48,10 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public Event newEvent(Event event, Long userId) {
-        User user = userService.getUser(userId);
-        event.setUser(user);
-        event.setActive(true);
         if(event.getDate().isAfter(LocalDate.now())) {
+            User user = userService.getUser(userId);
+            event.setUser(user);
+            event.setActive(true);
             return eventRepository.save(event);
         } 
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"); 
