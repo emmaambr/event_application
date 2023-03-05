@@ -1,29 +1,49 @@
 package com.example.backend.entity;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import javax.validation.constraints.NotBlank;
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 public class Event {
 
+    public Event() {
+    }
+
+    public Event(String title, String description, LocalDateTime eventDate, int ageLimit, Double cost, Boolean active) {
+        this.title = title;
+        this.description = description;
+        this.eventDate = eventDate;
+        this.ageLimit = ageLimit;
+        this.cost = cost;
+        this.active = active;
+    }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; 
 
     @ManyToOne
     private User user;
 
+    @NotBlank(message = "title cannot be blank")
+    @Nonnull
+    @Column(nullable = false)
     private String title;
-    private String description; 
-    private LocalDate date; 
-    private LocalTime time; 
+
+    @NotBlank(message = "description cannot be blank")
+    @Nonnull
+    @Column(nullable = false)
+    private String description;
+    
+    @NotBlank(message = "eventDate cannot be blank")
+    @Nonnull
+    @Column(nullable = false)
+    private LocalDateTime eventDate; 
+
     private int ageLimit;
     private Double cost; 
     private Boolean active; 
@@ -60,20 +80,12 @@ public class Event {
         this.description = description;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDateTime getEventDate() {
+        return eventDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public LocalTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalTime time) {
-        this.time = time;
+    public void setEventDate(LocalDateTime eventDate) {
+        this.eventDate = eventDate;
     }
 
     public int getAgeLimit() {
