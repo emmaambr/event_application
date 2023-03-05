@@ -1,7 +1,6 @@
 package com.example.backend.repository;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Modifying;
@@ -23,7 +22,7 @@ public interface EventRepository extends CrudRepository<Event, Long> {
 
     @Transactional
     @Modifying
-    @Query("UPDATE Event e SET e.active = :active WHERE e.date < :date AND e.time < :time")
-        void updateActive(@Param("active") Boolean active, @Param("date") LocalDate date, @Param("time") LocalTime time);  
+    @Query("UPDATE Event e SET e.active = :active WHERE e.eventDate < :now")
+        void updateActive(@Param("active") Boolean active, @Param("now") LocalDateTime now);  
     
 }

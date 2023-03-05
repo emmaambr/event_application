@@ -1,7 +1,6 @@
 package com.example.backend.entity;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotBlank;
 
@@ -14,11 +13,10 @@ public class Event {
     public Event() {
     }
 
-    public Event(String title, String description, LocalDate date, LocalTime time, int ageLimit, Double cost, Boolean active) {
+    public Event(String title, String description, LocalDateTime eventDate, int ageLimit, Double cost, Boolean active) {
         this.title = title;
         this.description = description;
-        this.date = date;
-        this.time = time;
+        this.eventDate = eventDate;
         this.ageLimit = ageLimit;
         this.cost = cost;
         this.active = active;
@@ -41,15 +39,10 @@ public class Event {
     @Column(nullable = false)
     private String description;
     
-    @NotBlank(message = "date cannot be blank")
+    @NotBlank(message = "eventDate cannot be blank")
     @Nonnull
     @Column(nullable = false)
-    private LocalDate date; 
-
-    @NotBlank(message = "time cannot be blank")
-    @Nonnull
-    @Column(nullable = false)
-    private LocalTime time; 
+    private LocalDateTime eventDate; 
 
     private int ageLimit;
     private Double cost; 
@@ -87,20 +80,12 @@ public class Event {
         this.description = description;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDateTime getEventDate() {
+        return eventDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public LocalTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalTime time) {
-        this.time = time;
+    public void setEventDate(LocalDateTime eventDate) {
+        this.eventDate = eventDate;
     }
 
     public int getAgeLimit() {
