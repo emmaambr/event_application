@@ -6,14 +6,13 @@ export default function NavComponent() {
     function logOut() {
         localStorage.removeItem("token");
         localStorage.removeItem("userToken")
-        window.location.replace("/");
     }
 
     let loggedIn;
     if (token) {
-        loggedIn = <a onClick={logOut}> Log out </a>
+        loggedIn = <a href="/" onClick={logOut}> Log out </a>
     } else {
-        loggedIn = <a href='/login'> Login / Register </a>
+        loggedIn = <a href="/login"> Login / Register </a>
     }
 
     let myPage;
