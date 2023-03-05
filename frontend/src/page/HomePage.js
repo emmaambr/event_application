@@ -1,4 +1,5 @@
 import React from "react";
+import ActiveEventComponent from "../component/ActiveEventComponent";
 import NavComponent from "../component/NavComponent";
 
 const HomePage = () => {
@@ -6,7 +7,7 @@ const HomePage = () => {
     return (
         <div> 
             <NavComponent />
-            HomePage
+            <ActiveEventComponent />
         </div>
     )
 }
