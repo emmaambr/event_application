@@ -3,6 +3,9 @@ package com.example.backend.entity;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import javax.validation.constraints.NotBlank;
+
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 
 @Entity
@@ -22,16 +25,32 @@ public class Event {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; 
 
     @ManyToOne
     private User user;
 
+    @NotBlank(message = "title cannot be blank")
+    @Nonnull
+    @Column(nullable = false)
     private String title;
-    private String description; 
+
+    @NotBlank(message = "description cannot be blank")
+    @Nonnull
+    @Column(nullable = false)
+    private String description;
+    
+    @NotBlank(message = "date cannot be blank")
+    @Nonnull
+    @Column(nullable = false)
     private LocalDate date; 
+
+    @NotBlank(message = "time cannot be blank")
+    @Nonnull
+    @Column(nullable = false)
     private LocalTime time; 
+
     private int ageLimit;
     private Double cost; 
     private Boolean active; 
