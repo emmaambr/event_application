@@ -20,7 +20,7 @@ public class EventController {
         return new ResponseEntity<>(eventService.getAllEvents(), HttpStatus.OK);
     }
 
-    @GetMapping("/event/active/true")
+    @GetMapping("/event/active")
     public ResponseEntity <List<Event>> getAllActiveEvents() {
         return new ResponseEntity<>(eventService.getAllActiveEvents(), HttpStatus.OK);
     }
