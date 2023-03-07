@@ -4,7 +4,7 @@ export default function MyEventComponent() {
     const [events, setEvents] = useState([]);
     const [active, setActive] = useState(false);
     const [btnText, setBtnText] = useState("View past events");
-    const [title, setTitle] = useState("My future events");
+    const [title, setTitle] = useState("My upcoming events");
     const [userId] = useState(() => {
         const saved = localStorage.getItem("userId");
         const initialValue = JSON.parse(saved);
@@ -41,10 +41,10 @@ export default function MyEventComponent() {
 
     return (
         <div>
-            <h1 className="title"> {title? 'My future events' : 'My past auctions'} </h1>
+            <h1 className="title"> {title? 'My upcoming events' : 'My past auctions'} </h1>
 
             <button className="toggleBtn" value={active? false : true} onClick={(ev) => HandleStatus(ev.target.value)}> 
-                    {btnText? 'View past events' : 'View future events'} 
+                    {btnText? 'View past events' : 'View upcoming events'} 
             </button>
 
             {events.sort((a, b) => a.id - b.id).map((event) => {
