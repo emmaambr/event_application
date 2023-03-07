@@ -2,6 +2,9 @@ import { React, useState, useEffect } from "react";
 
 export default function MyEventComponent() {
     const [events, setEvents] = useState([]);
+    const [active, setActive] = useState(false);
+    const [btnText, setBtnText] = useState("View past events");
+    const [title, setTitle] = useState("My future events");
     const [userId] = useState(() => {
         const saved = localStorage.getItem("userId");
         const initialValue = JSON.parse(saved);
@@ -22,8 +25,28 @@ export default function MyEventComponent() {
             )
     }, [])
 
+    async function HandleStatus() { 
+        const res = await fetch(`http://localhost:8080/event/filter?userId=${userId}&active=${active}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })  
+        const result = await res.json();  
+        setEvents(result);
+        setActive(current => !current);
+        setBtnText(current => !current);
+        setTitle(current => !current);
+    }
+
     return (
         <div>
+            <h1 className="title"> {title? 'My future events' : 'My past auctions'} </h1>
+
+            <button className="toggleBtn" value={active? false : true} onClick={(ev) => HandleStatus(ev.target.value)}> 
+                    {btnText? 'View past events' : 'View future events'} 
+            </button>
+
             {events.sort((a, b) => a.id - b.id).map((event) => {
                 return (
                     <div key={event.id}>
