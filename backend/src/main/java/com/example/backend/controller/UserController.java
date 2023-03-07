@@ -26,4 +26,9 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @GetMapping("/user/username")
+    public ResponseEntity <Long> getUserId(@RequestParam String username) {
+        return new ResponseEntity<>(userService.getUserId(username), HttpStatus.OK);
+    }
+
 }
