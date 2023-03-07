@@ -16,8 +16,15 @@ export default function LoginComponent() {
                     localStorage.setItem("token", token)
                     AuthenticationToken(token);
                 }
-            })
-        window.location.replace("/");  // should redirect to mypages 
+            })                                            
+        await axios.get("http://localhost:8080/user/username?username=" + username)
+        .then(res => {
+            if (res.status === 200) {
+                const token = res.data;
+                localStorage.setItem("userId", token)
+                window.location.replace("/mypage");
+            }
+        })
     }
 
     return (
