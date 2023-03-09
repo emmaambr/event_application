@@ -21,8 +21,7 @@ export default function MyEventComponent() {
             .then(res => res.json())
             .then((result) => {
                 setEvents(result);
-            }
-            )
+            })
     }, [])
 
     async function HandleStatus() { 
