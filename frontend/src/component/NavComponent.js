@@ -5,7 +5,7 @@ const token = localStorage.getItem("token");
 export default function NavComponent() {
     function logOut() {
         localStorage.removeItem("token");
-        localStorage.removeItem("userToken")
+        localStorage.removeItem("userId")
     }
 
     let loggedIn;
