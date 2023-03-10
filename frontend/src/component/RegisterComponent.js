@@ -46,7 +46,7 @@ export default function RegisterComponent() {
 
                     <input className="user-input" value={email} placeholder="Email" required={true} onChange={(e) => setEmail(e.target.value)} />
 
-                    <button className="btn" type="submitUser"> Register </button>
+                    <button className="btn" type="submitUser"> OK </button>
                 </form>
             </div>
         </div>
