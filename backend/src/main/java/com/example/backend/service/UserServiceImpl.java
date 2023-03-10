@@ -21,16 +21,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUser(Long id) {
         return userRepository.findById(id).orElseThrow(
-            () -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request"));
+            () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found"));
     }
 
     @Override
     public User newUser(User user) {
-        if (user.getEmail().contains("@")) {
-            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-            return userRepository.save(user);
-        }
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
     }
 
     @Override

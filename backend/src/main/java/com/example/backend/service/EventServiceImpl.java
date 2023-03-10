@@ -23,31 +23,25 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<Event> getAllEvents() {
-        eventRepository.updateActive(false, LocalDateTime.now());
-
+        eventRepository.updateActive(false, LocalDateTime.now()); // (Quarts/Cron to handle inactive events is recommended) 
         return (List<Event>)eventRepository.findAll();
     }
 
     @Override
     public List<Event> getAllActiveEvents() {
-        eventRepository.updateActive(false, LocalDateTime.now());
-
+        eventRepository.updateActive(false, LocalDateTime.now()); // (Quarts/Cron to handle inactive events is recommended) 
         return eventRepository.activeEvents();
     }
 
     @Override
-    public List<Event> getActiveUserEvent(Long userId, Boolean active){
-        eventRepository.updateActive(false, LocalDateTime.now());
-
-        if(active != null) {
-            return eventRepository.activeUserEvent(userId, active);
-        }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found"); 
+    public List<Event> getActiveUserEvent(Long userId, Boolean active){ 
+        eventRepository.updateActive(false, LocalDateTime.now()); // (Quarts/Cron to handle inactive events is recommended) 
+        return eventRepository.activeUserEvent(userId, active); 
     }
 
     @Override
     public Event newEvent(Event event, Long userId) {
-        if(event.getEventDate().isAfter(LocalDateTime.now())) {
+        if(event.getEventDate() != null && event.getEventDate().isAfter(LocalDateTime.now())) {
             User user = userService.getUser(userId);
             event.setUser(user);
             event.setActive(true);

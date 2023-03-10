@@ -27,7 +27,7 @@ public class EventController {
 
     @GetMapping("/events/filter") 
     public ResponseEntity <List<Event>> getActiveUserEvent(@RequestParam(required = true) Long userId, @RequestParam(required = true) Boolean active) {
-            return new ResponseEntity<>(eventService.getActiveUserEvent(userId, active), HttpStatus.OK);
+        return new ResponseEntity<>(eventService.getActiveUserEvent(userId, active), HttpStatus.OK);
     }
 
     @PostMapping("/events")
