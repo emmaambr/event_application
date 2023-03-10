@@ -1,22 +1,19 @@
 import React from "react";
 import NavComponent from "../component/NavComponent";
 import LoginComponent from "../component/LoginComponent";
+import "../css/loginPage.css"
 
 const LoginPage = () => {
     return (
         <div>
             <NavComponent />
 
-            <div>
-                <h1> Log in to your account </h1>
-                <LoginComponent />            
+            <div className="login-page-content">
+                <h1> Logga in </h1>
+                <a href="/register"> Eller klicka här för att registrera ett konto </a>            
             </div>
-       
-            <div> 
-                <div>
-                    <a href="/register"> Click here to register </a>
-                </div>
-            </div>
+
+            <LoginComponent />
         </div>
     );
 };
