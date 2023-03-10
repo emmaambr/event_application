@@ -4,17 +4,16 @@ export default function ActiveEventComponent() {
     const [events, setEvents] = useState([]);
     
     useEffect(() => {
-        fetch("http://localhost:8080/event/active", {
+        fetch("http://localhost:8080/events/active", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
             }
         })
-            .then(res => res.json())
-            .then((result) => {
-                setEvents(result);
-            }
-            )
+        .then(res => res.json())
+        .then((result) => {
+            setEvents(result);
+        })
     }, [])
 
     return (

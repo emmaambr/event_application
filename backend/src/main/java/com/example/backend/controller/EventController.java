@@ -15,22 +15,22 @@ public class EventController {
     @Autowired
     EventService eventService;
 
-    @GetMapping("/event")
+    @GetMapping("/events")
     public ResponseEntity <List<Event>> getAllEvents() {
         return new ResponseEntity<>(eventService.getAllEvents(), HttpStatus.OK);
     }
 
-    @GetMapping("/event/active")
+    @GetMapping("/events/active")
     public ResponseEntity <List<Event>> getAllActiveEvents() {
         return new ResponseEntity<>(eventService.getAllActiveEvents(), HttpStatus.OK);
     }
 
-    @GetMapping("/event/filter") 
+    @GetMapping("/events/filter") 
     public ResponseEntity <List<Event>> getActiveUserEvent(@RequestParam(required = true) Long userId, @RequestParam(required = true) Boolean active) {
-            return new ResponseEntity<>(eventService.getActiveUserEvent(userId, active), HttpStatus.OK);
+        return new ResponseEntity<>(eventService.getActiveUserEvent(userId, active), HttpStatus.OK);
     }
 
-    @PostMapping("/event")
+    @PostMapping("/events")
     public ResponseEntity<Event> newEvent(@RequestBody Event event, @RequestParam(required = true) Long userId) { 
         return new ResponseEntity<>(eventService.newEvent(event, userId), HttpStatus.CREATED);
     }

@@ -12,20 +12,20 @@ export default function MyEventComponent() {
     });
     
     useEffect(() => { 
-        fetch(`http://localhost:8080/event/filter?userId=${userId}&active=true`, {
+        fetch(`http://localhost:8080/events/filter?userId=${userId}&active=true`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
             }
         })
-            .then(res => res.json())
-            .then((result) => {
-                setEvents(result);
-            })
+        .then(res => res.json())
+        .then((result) => {
+            setEvents(result);
+        })
     }, [])
 
-    async function HandleStatus() { 
-        const res = await fetch(`http://localhost:8080/event/filter?userId=${userId}&active=${active}`, {
+    async function toggleActiveEvents() { 
+        const res = await fetch(`http://localhost:8080/events/filter?userId=${userId}&active=${active}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -42,7 +42,7 @@ export default function MyEventComponent() {
         <div>
             <h1 className="title"> {title? 'My upcoming events' : 'My past auctions'} </h1>
 
-            <button className="toggleBtn" value={active? false : true} onClick={(ev) => HandleStatus(ev.target.value)}> 
+            <button className="toggleBtn" value={active? false : true} onClick={() => toggleActiveEvents()}> 
                     {btnText? 'View past events' : 'View upcoming events'} 
             </button>
 

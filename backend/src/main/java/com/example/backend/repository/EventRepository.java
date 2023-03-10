@@ -23,6 +23,6 @@ public interface EventRepository extends CrudRepository<Event, Long> {
     @Transactional
     @Modifying
     @Query("UPDATE Event e SET e.active = :active WHERE e.eventDate < :now")
-        void updateActive(@Param("active") Boolean active, @Param("now") LocalDateTime now);  
+        void updateActive(@Param("active") Boolean active, @Param("now") LocalDateTime now);  // (Quarts/Cron to handle inactive events is recommended) 
     
 }
