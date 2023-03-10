@@ -18,10 +18,10 @@ export default function MyEventComponent() {
                 "Content-Type": "application/json",
             }
         })
-            .then(res => res.json())
-            .then((result) => {
-                setEvents(result);
-            })
+        .then(res => res.json())
+        .then((result) => {
+            setEvents(result);
+        })
     }, [])
 
     async function HandleStatus() { 

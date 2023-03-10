@@ -10,11 +10,10 @@ export default function ActiveEventComponent() {
                 "Content-Type": "application/json",
             }
         })
-            .then(res => res.json())
-            .then((result) => {
-                setEvents(result);
-            }
-            )
+        .then(res => res.json())
+        .then((result) => {
+            setEvents(result);
+        })
     }, [])
 
     return (

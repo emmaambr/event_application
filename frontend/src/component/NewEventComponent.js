@@ -44,11 +44,11 @@ export default function NewEventComponent() {
         <div>
             <div>
                 <form onSubmit={submitEvent}>
-                    <input value={title} placeholder="Title" required="true" type="text" onChange={(e) => setTitle(e.target.value)} />
+                    <input value={title} placeholder="Title" required={true} type="text" onChange={(e) => setTitle(e.target.value)} />
  
-                    <input value={description} placeholder="Event description" required="true" type="text" onChange={(e) => setDescription(e.target.value)} />
+                    <input value={description} placeholder="Event description" required={true} type="text" onChange={(e) => setDescription(e.target.value)} />
 
-                    <input value={eventDate} placeholder="YYYY-MM-DDTHH:MM:SS" required="true" type="text" onChange={(e) => setEventDate(e.target.value)} />
+                    <input value={eventDate} placeholder="YYYY-MM-DDTHH:MM:SS" required={true} type="text" onChange={(e) => setEventDate(e.target.value)} />
 
                     *<input value={ageLimit} placeholder="Age limit" type="text" onChange={(e) => setAgeLimit(e.target.value)} />
  
