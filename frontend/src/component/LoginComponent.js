@@ -32,7 +32,7 @@ export default function LoginComponent() {
     return (
         <div>
             <div>
-                <form className="login-content" onSubmit={login}>
+                <form className="form-content" onSubmit={login}>
                     <input className="user-input" value={username} placeholder="Användarnamn" onChange={(e) => setUsername(e.target.value)} />
 
                     <input className="user-input" value={password} placeholder="Lösenord" onChange={(e) => setPassword(e.target.value)} />

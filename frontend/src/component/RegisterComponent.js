@@ -1,6 +1,7 @@
 import { React, useState } from 'react'
 import { AuthenticationToken } from '../helper/AuthenticationToken';
 import axios from 'axios';
+import "../css/login.css"
 
 export default function RegisterComponent() {
     const [username, setUsername] = useState('')
@@ -36,28 +37,16 @@ export default function RegisterComponent() {
     return (
         <div>
             <div>
-                <form onSubmit={submitUser}>
-                    <label>
-                        Username:
-                        <input value={username} required={true} onChange={(e) => setUsername(e.target.value)} />
-                    </label>
+                <form className='form-content' onSubmit={submitUser}>
+                    <input className="user-input" value={username} placeholder="Användarnamn" required={true} onChange={(e) => setUsername(e.target.value)} />
 
-                    <label>
-                        Name:
-                        <input value={name} required={true} onChange={(e) => setName(e.target.value)} />
-                    </label>
+                    <input className="user-input" value={name} placeholder="Namn" required={true} onChange={(e) => setName(e.target.value)} />
 
-                    <label>
-                        Password:
-                        <input value={password} required={true} onChange={(e) => setPassword(e.target.value)} />
-                    </label>
+                    <input className="user-input" value={password} placeholder="Lösenord" required={true} onChange={(e) => setPassword(e.target.value)} />
 
-                    <label>
-                        Email:
-                        <input vvalue={email} required={true} onChange={(e) => setEmail(e.target.value)} />
-                    </label>
+                    <input className="user-input" value={email} placeholder="Email" required={true} onChange={(e) => setEmail(e.target.value)} />
 
-                    <button type="submitUser"> Register </button>
+                    <button className="btn" type="submitUser"> Register </button>
                 </form>
             </div>
         </div>
