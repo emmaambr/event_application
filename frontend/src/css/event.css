@@ -1,0 +1,42 @@
+.event-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 60vw;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.event {
+    margin: 1rem;
+    padding: 1rem;
+    box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);
+    border-radius: 8px;
+}
+
+.dropdown-content {
+    display: none;
+    z-index: 1;
+}
+
+.event:hover .dropdown-content {
+    display: block;
+}
+
+.title-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.description {
+    margin: 1.4rem 0rem;
+}
+
+.cost {
+    margin-right: 2rem;
+}

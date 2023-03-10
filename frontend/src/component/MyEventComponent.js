@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+import "../css/event.css"
 
 export default function MyEventComponent() {
     const [events, setEvents] = useState([]);
@@ -46,19 +47,26 @@ export default function MyEventComponent() {
                     {btnText? 'View past events' : 'View upcoming events'} 
             </button>
 
-            {events.sort((a, b) => a.id - b.id).map((event) => {
-                return (
-                    <div key={event.id}>
-                        <div>
-                            <span> {event.title} </span> 
-                            <span> When: {event.eventDate.toString().substring(2, 10) + " kl." + event.eventDate.toString().substring(11, 16)} </span>
-                            <span> {event.description} </span>
-                            <span> Cost: {event.cost} </span>
-                            <span> Age limit: {event.ageLimit}+ </span>
+            <div className="event-container">
+                {events.sort((a, b) => a.id - b.id).map((event) => {
+                    return (
+                        <div key={event.id}>
+                            <div className="event"> 
+                                <div className="title-content"> 
+                                    <span className="title"> {event.title} </span> 
+                                    <span> {event.eventDate.toString().substring(0, 10) + " kl." + event.eventDate.toString().substring(11, 16)} </span>
+                                </div>
+
+                                <div className="dropdown-content"> 
+                                    <section className="description"> {event.description} </section> 
+                                    <span className="cost"> Pris: {event.cost} kr/pp </span>
+                                    <span> Åldersgräns: {event.ageLimit}+ </span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                );
-            })} 
+                    );
+                })} 
+            </div>
         </div>
     );
 }
