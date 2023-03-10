@@ -1,5 +1,4 @@
 import { React, useState } from "react";
-//import axios from 'axios';
 
 export default function NewEventComponent() {
     const [title, setTitle] = useState("");

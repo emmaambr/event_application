@@ -24,7 +24,7 @@ export default function MyEventComponent() {
         })
     }, [])
 
-    async function HandleStatus() { 
+    async function toggleActiveEvents() { 
         const res = await fetch(`http://localhost:8080/events/filter?userId=${userId}&active=${active}`, {
             method: "GET",
             headers: {
@@ -42,7 +42,7 @@ export default function MyEventComponent() {
         <div>
             <h1 className="title"> {title? 'My upcoming events' : 'My past auctions'} </h1>
 
-            <button className="toggleBtn" value={active? false : true} onClick={(ev) => HandleStatus(ev.target.value)}> 
+            <button className="toggleBtn" value={active? false : true} onClick={() => toggleActiveEvents()}> 
                     {btnText? 'View past events' : 'View upcoming events'} 
             </button>
 

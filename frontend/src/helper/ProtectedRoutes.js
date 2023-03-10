@@ -3,9 +3,7 @@ import { Outlet, Navigate } from 'react-router-dom';
 
 const PrivateRoutes = () => {
     function hasJWT() {
-        let flag = false;
-        localStorage.getItem("token") ? flag = true : flag = false
-
+        let flag = localStorage.getItem("token");
         return flag
     }
 
