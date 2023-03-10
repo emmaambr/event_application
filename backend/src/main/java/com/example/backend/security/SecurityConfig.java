@@ -39,7 +39,7 @@ public class SecurityConfig {
             .authorizeHttpRequests()
             .requestMatchers(HttpMethod.GET, SecurityConstants.EVENT_PATH).permitAll() 
             .requestMatchers(HttpMethod.POST, SecurityConstants.REGISTER_PATH).permitAll()
-            .requestMatchers(HttpMethod.POST, "/event").permitAll()            // temporarily used
+            .requestMatchers(HttpMethod.POST, "/events").permitAll()            // temporarily used
             .requestMatchers(HttpMethod.GET, "/user").permitAll()              // temporarily used
             .anyRequest().authenticated()
             .and()

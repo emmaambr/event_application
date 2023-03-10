@@ -12,7 +12,7 @@ export default function MyEventComponent() {
     });
     
     useEffect(() => { 
-        fetch(`http://localhost:8080/event/filter?userId=${userId}&active=true`, {
+        fetch(`http://localhost:8080/events/filter?userId=${userId}&active=true`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -25,7 +25,7 @@ export default function MyEventComponent() {
     }, [])
 
     async function HandleStatus() { 
-        const res = await fetch(`http://localhost:8080/event/filter?userId=${userId}&active=${active}`, {
+        const res = await fetch(`http://localhost:8080/events/filter?userId=${userId}&active=${active}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

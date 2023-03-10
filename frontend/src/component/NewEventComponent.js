@@ -25,7 +25,7 @@ export default function NewEventComponent() {
             "cost": cost 
         }
 
-        fetch("http://localhost:8080/event?userId=" + userId, {
+        fetch("http://localhost:8080/events?userId=" + userId, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
