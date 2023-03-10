@@ -39,22 +39,22 @@ export default function RegisterComponent() {
                 <form onSubmit={submitUser}>
                     <label>
                         Username:
-                        <input value={username} onChange={(e) => setUsername(e.target.value)} />
+                        <input value={username} required={true} onChange={(e) => setUsername(e.target.value)} />
                     </label>
 
                     <label>
                         Name:
-                        <input value={name} onChange={(e) => setName(e.target.value)} />
+                        <input value={name} required={true} onChange={(e) => setName(e.target.value)} />
                     </label>
 
                     <label>
                         Password:
-                        <input value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <input value={password} required={true} onChange={(e) => setPassword(e.target.value)} />
                     </label>
 
                     <label>
                         Email:
-                        <input vvalue={email} onChange={(e) => setEmail(e.target.value)} />
+                        <input vvalue={email} required={true} onChange={(e) => setEmail(e.target.value)} />
                     </label>
 
                     <button type="submitUser"> Register </button>
