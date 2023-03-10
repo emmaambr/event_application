@@ -1,9 +1,10 @@
 import * as React from 'react';
+import "../css/navbar.css"
 
 const token = localStorage.getItem("token");
 
 export default function NavComponent() {
-    let loggedIn = token ? <a href="/" onClick={logOut}> Log out </a> : <a href="/login"> Login / Register </a>;
+    let loggedIn = token ? <a href="/" onClick={logOut}> Log out </a> : <a href="/login"> Login </a>;
     let myPage = token && <a href="/mypage"> My page </a>;
     
     function logOut() {
@@ -12,9 +13,8 @@ export default function NavComponent() {
     }
   
     return (
-        <div>
-            {myPage}                   
-            {loggedIn}
+        <div className="navbar">
+           {myPage} | {loggedIn}
         </div>
     );
 }
