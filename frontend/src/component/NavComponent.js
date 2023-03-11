@@ -14,7 +14,7 @@ export default function NavComponent() {
   
     return (
         <div className="navbar">
-           {myPage} | {loggedIn}
+            <a className="" href="/"> Start </a> | {myPage} | {loggedIn}
         </div>
     );
 }

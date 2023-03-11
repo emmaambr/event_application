@@ -5,6 +5,7 @@ import LoginPage from "./page/LoginPage";
 import HomePage from "./page/HomePage";
 import RegisterPage from "./page/RegisterPage";
 import MyPage from "./page/MyPage";
+import NewEvent from "./page/NewEvent";
 
 import PrivateRoutes from './helper/ProtectedRoutes';
 import { AuthenticationToken } from './helper/AuthenticationToken';
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="/register" element={ <RegisterPage /> }/>
         <Route element={ <PrivateRoutes /> }>
           <Route exact path="/mypage" element={ <MyPage /> }/>
+          <Route exact path="/newevent" element={ <NewEvent /> }/>
         </Route>
       </Routes>
     </Router>
