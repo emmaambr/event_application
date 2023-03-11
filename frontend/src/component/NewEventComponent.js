@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import "../css/eventForm.css"
 
 export default function NewEventComponent() {
     const [title, setTitle] = useState("");
@@ -6,7 +7,6 @@ export default function NewEventComponent() {
     const [eventDate, setEventDate] = useState("");
     const [ageLimit, setAgeLimit] = useState("");
     const [cost, setCost] = useState("");
-    const [notification, setNotification] = useState("");
     const [userId] = useState(() => {
         const saved = localStorage.getItem("userId");
         const initialValue = JSON.parse(saved);
@@ -33,31 +33,27 @@ export default function NewEventComponent() {
         }).then(response => {
             if (response.ok) {
                 response.json().then(json => {
-                setNotification("Event successfully submitted")
                 });
-            } setNotification("Ooops, did you forget something?")
+                window.location.replace("/mypage");
+            }
         }); 
     }
 
     return (
         <div>
             <div>
-                <form onSubmit={submitEvent}>
-                    <input value={title} placeholder="Title" required={true} type="text" onChange={(e) => setTitle(e.target.value)} />
+                <form className="event-form" onSubmit={submitEvent}>
+                    <input className="event-input" value={title} placeholder="Rubrik" required={true} type="text" onChange={(e) => setTitle(e.target.value)} />
+
+                    <input className="event-input" value={eventDate} required={true} type="datetime-local" onChange={(e) => setEventDate(e.target.value)} />
+  
+                    <textarea className="user-input" value={description} placeholder="Beskrivning" required={true} type="text" onChange={(e) => setDescription(e.target.value)} />
+
+                    <input className="event-input" value={ageLimit} placeholder="Åldersgräns" type="text" onChange={(e) => setAgeLimit(e.target.value)} />
  
-                    <input value={description} placeholder="Event description" required={true} type="text" onChange={(e) => setDescription(e.target.value)} />
+                    <input className="event-input" value={cost} placeholder="Pris / pp" required={true} type="text" onChange={(e) => setCost(e.target.value)} />
 
-                    <input value={eventDate} placeholder="YYYY-MM-DDTHH:MM:SS" required={true} type="text" onChange={(e) => setEventDate(e.target.value)} />
-
-                    *<input value={ageLimit} placeholder="Age limit" type="text" onChange={(e) => setAgeLimit(e.target.value)} />
- 
-                    *<input value={cost} placeholder="cost" type="text" onChange={(e) => setCost(e.target.value)} />
-
-                    <button type="submit"> submit </button>
-
-                    <br/>
-                    <p>* = optional</p>
-                    <p> { notification } </p>
+                    <button className="btn" type="submit"> OK </button>
                 </form>
             </div>
         </div>

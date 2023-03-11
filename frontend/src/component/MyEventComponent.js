@@ -4,15 +4,11 @@ import "../css/event.css"
 export default function MyEventComponent() {
     const [events, setEvents] = useState([]);
     const [active, setActive] = useState(false);
-    const [btnText, setBtnText] = useState("View past events");
-    const [title, setTitle] = useState("My upcoming events");
-    const [userId] = useState(() => {
-        const saved = localStorage.getItem("userId");
-        const initialValue = JSON.parse(saved);
-        return initialValue || "";
-    });
+    const [btnText, setBtnText] = useState("Mina avslutade event");
+    const [title, setTitle] = useState("Mina pågående event");
     
     useEffect(() => { 
+        const userId = localStorage.getItem('userId');
         fetch(`http://localhost:8080/events/filter?userId=${userId}&active=true`, {
             method: "GET",
             headers: {
@@ -26,6 +22,7 @@ export default function MyEventComponent() {
     }, [])
 
     async function toggleActiveEvents() { 
+        const userId = localStorage.getItem('userId');
         const res = await fetch(`http://localhost:8080/events/filter?userId=${userId}&active=${active}`, {
             method: "GET",
             headers: {
@@ -40,14 +37,16 @@ export default function MyEventComponent() {
     }
 
     return (
-        <div>
-            <h1 className="title"> {title? 'My upcoming events' : 'My past auctions'} </h1>
+        <div className="my-event-container">
+            <div className="center-partial">
+                <h1 className="event-title"> {title? 'Mina pågående event' : 'Mina avslutade event'} </h1>
 
-            <button className="toggleBtn" value={active? false : true} onClick={() => toggleActiveEvents()}> 
-                    {btnText? 'View past events' : 'View upcoming events'} 
-            </button>
-
-            <div className="event-container">
+                <button className="toggleBtn" value={active? false : true} onClick={() => toggleActiveEvents()}> 
+                        {btnText? 'Visa avslutade event' : 'Visa pågående event'} 
+                </button>
+            </div>
+        
+            <div className="event-content">
                 {events.sort((a, b) => a.id - b.id).map((event) => {
                     return (
                         <div key={event.id}>
