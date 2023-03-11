@@ -1,12 +1,12 @@
 import React from "react";
+import NavComponent from "../component/NavComponent";
 import MyEventComponent from "../component/MyEventComponent";
-import NewEventComponent from "../component/NewEventComponent";
+import "../css/myPage.css";
 
 const MyPage = () => {
-
     return (
         <div> 
-            <NewEventComponent />
+            <NavComponent /> <a className="new-event-link" href="/newevent"> Nytt event + </a>
             <MyEventComponent />
         </div>
     )

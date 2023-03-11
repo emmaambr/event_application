@@ -1,0 +1,13 @@
+.new-event-link {
+    position: absolute;
+    left: 2rem;
+    top: 5rem;
+    color: #47653E;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.new-event-link:hover {
+    font-size: bold;
+    color: #000;
+}

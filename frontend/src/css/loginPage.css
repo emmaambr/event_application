@@ -1,0 +1,23 @@
+.login-page-content {
+    max-width: 40vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-page-content h1 {
+    margin-bottom: 0.6rem;
+}
+
+.login-page-content a {
+    margin-bottom: 1rem;
+    color: #292826;
+    text-decoration: none;
+}
+
+.login-page-content a:hover {
+    color: #000;
+    cursor: pointer;
+    text-decoration: underline;
+}

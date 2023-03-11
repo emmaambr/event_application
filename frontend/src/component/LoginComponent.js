@@ -1,6 +1,7 @@
 import { React, useState } from 'react'
 import { AuthenticationToken } from '../helper/AuthenticationToken';
 import axios from 'axios';
+import "../css/userForm.css"
 
 export default function LoginComponent() {
     const [username, setUsername] = useState('')
@@ -31,17 +32,12 @@ export default function LoginComponent() {
     return (
         <div>
             <div>
-                <form onSubmit={login}>
-                    <label>
-                        <input value={username} placeholder="Username" onChange={(e) => setUsername(e.target.value)} />
-                    </label>
+                <form className="form-content" onSubmit={login}>
+                    <input className="user-input" value={username} placeholder="Användarnamn" onChange={(e) => setUsername(e.target.value)} />
 
-                    <label>
-                        Password:
-                        <input value={password} onChange={(e) => setPassword(e.target.value)} />
-                    </label>
+                    <input className="user-input" value={password} placeholder="Lösenord" type="password" onChange={(e) => setPassword(e.target.value)} />
 
-                    <button type="submit"> Log in </button>
+                    <button className="btn" type="submit"> OK </button>
                 </form>
             </div>
         </div>
